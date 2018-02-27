@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public abstract class Location {
     abstract String getName();
 
-    abstract ArrayList<String> getActionsAvailable();
-
     abstract boolean isPlayerAtLocation();
 
     abstract void setPlayerAtLocation(boolean bool);
+
+    abstract void handleUserInput(String input);
 
     abstract void nextEpoch();
 

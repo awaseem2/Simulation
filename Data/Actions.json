@@ -1,0 +1,74 @@
+{
+  "actions": [
+    {
+      "name": "deep sleep",
+      "location": "home",
+      "typeOfStat": "energy",
+      "statIncreaseAmount": 9,
+      "timeIncreaseAmount": 480
+    },
+    {
+      "name": "nap",
+      "location": "home",
+      "typeOfStat": "energy",
+      "statIncreaseAmount": 3,
+      "timeIncreaseAmount": 60
+    },
+    {
+      "name": "eat meal",
+      "location": "home",
+      "typeOfStat": "hunger",
+      "statIncreaseAmount": 8,
+      "timeIncreaseAmount": 60
+    },
+    {
+      "name": "eat snack",
+      "location": "home",
+      "typeOfStat": "hunger",
+      "statIncreaseAmount": 3,
+      "timeIncreaseAmount": 15
+    },
+    {
+      "name": "watch tv",
+      "location": "home",
+      "typeOfStat": "fun",
+      "statIncreaseAmount": 5,
+      "timeIncreaseAmount": 75
+    },
+    {
+      "name": "read book",
+      "location": "home",
+      "typeOfStat": "fun",
+      "statIncreaseAmount": 4,
+      "timeIncreaseAmount": 85
+    },
+    {
+      "name": "call friend",
+      "location": "home",
+      "typeOfStat": "social",
+      "statIncreaseAmount": 5,
+      "timeIncreaseAmount": 45
+    },
+    {
+      "name": "shower",
+      "location": "home",
+      "typeOfStat": "hygiene",
+      "statIncreaseAmount": 8,
+      "timeIncreaseAmount": 35
+    },
+    {
+      "name": "wash hands",
+      "location": "home",
+      "typeOfStat": "hygiene",
+      "statIncreaseAmount": 2,
+      "timeIncreaseAmount": 5
+    },
+    {
+      "name": "use toilet",
+      "location": "home",
+      "typeOfStat": "bladder",
+      "statIncreaseAmount": 9,
+      "timeIncreaseAmount": 10
+    }
+  ]
+}
