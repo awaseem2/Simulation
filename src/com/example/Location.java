@@ -9,9 +9,7 @@ public abstract class Location {
 
     abstract void setPlayerAtLocation(boolean bool);
 
-    abstract void handleUserInput(String input);
-
     abstract void nextEpoch();
 
-    abstract void moveTo();
+    abstract void moveTo(String location);
 }

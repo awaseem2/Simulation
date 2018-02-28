@@ -1,23 +1,25 @@
 package com.example;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class SimsGame {
     private Scanner scanner = new Scanner(System.in);
-    private ArrayList<Action> actions;
+    private List<Action> actions;
     boolean isFirstEpoch;
     private Home home;
     private Work work;
     private Park park;
 
     public void initializeSimulation() {
+        Sim.setAvailableActions(actions);
         home = new Home();
         work = new Work();
         park = new Park();
         UtilityFunctions.initializeLocations(home, work, park);
         /*UtilityFunctions.setCurrentLocation(home.getName());
         home.setPlayerAtLocation(true);*/
-        Sim.setAvailableActions(actions);
+
+        ActionManager.initializeFilteredActionsLists(home);
         Sim.setCurrentLocation(home);
         Sim.setStatsToFull();
         Sim.setAlive(true);
@@ -31,6 +33,9 @@ public class SimsGame {
         while (Sim.isAlive()) {
             handleUserInput();
         }
+
+        System.out.println("Your sim has died on " + Time.getCurrentTime()
+                + ". Thanks for playing!");
 
     }
 
@@ -55,14 +60,10 @@ public class SimsGame {
 
         String userInput = "";
 
-        while (!userInput.equals("next epoch")) {
-            System.out.println("Input what you would like your sim to do. " +
-                    "When you are done, say 'next epoch'.");
-            userInput = scanner.nextLine();
-            currentLocation.handleUserInput(userInput);
-        }
-
-        System.out.println("Your sim has died! Thanks for playing The Sims.");
+        System.out.println("Input what you would like your sim to do. " +
+                "When you are done, say 'next epoch'.");
+        userInput = scanner.nextLine();
+        UserInput.handleUserInput(userInput.toLowerCase());
 
 
     }

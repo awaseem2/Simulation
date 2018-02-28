@@ -1,6 +1,6 @@
 package com.example;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Sim {
     private static final int MAX_PER_STAT = 10;
@@ -11,7 +11,7 @@ public class Sim {
     private static double hygiene;
     private static double bladder;
     private static boolean alive;
-    private static ArrayList<Action> availableActions;
+    private static List<Action> availableActions;
     private static Location currentLocation;
 
     public static double getEnergy() {
@@ -70,11 +70,11 @@ public class Sim {
         Sim.alive = alive;
     }
 
-    public static ArrayList<Action> getAvailableActions() {
+    public static List<Action> getAvailableActions() {
         return availableActions;
     }
 
-    public static void setAvailableActions(ArrayList<Action> availableActions) {
+    public static void setAvailableActions(List<Action> availableActions) {
         Sim.availableActions = availableActions;
     }
 
@@ -94,6 +94,15 @@ public class Sim {
         Sim.bladder = MAX_PER_STAT;
         Sim.social = MAX_PER_STAT;
 
+    }
+
+    public static void printStats() {
+        System.out.println("Energy: " + energy);
+        System.out.println("Hunger: " + hunger);
+        System.out.println("Fun: " + fun);
+        System.out.println("Social: " + social);
+        System.out.println("Hygiene: " + hygiene);
+        System.out.println("Bladder: " + bladder);
     }
 
 

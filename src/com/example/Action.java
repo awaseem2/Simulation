@@ -26,4 +26,6 @@ public class Action {
     public int getTimeIncreaseAmount() {
         return timeIncreaseAmount;
     }
+
+
 }

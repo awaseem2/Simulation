@@ -5,6 +5,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.HashMap;
 
 public class UtilityFunctions {
@@ -46,8 +47,8 @@ public class UtilityFunctions {
         locationsMap.put("park", park);
     }
 
-    public static ArrayList<Action> actionsPerLocation(ArrayList<Action> actions, String location) {
-        ArrayList<Action> filteredActions = new ArrayList<>();
+    public static List<Action> actionsPerLocation(List<Action> actions, String location) {
+        List<Action> filteredActions = new ArrayList<>();
 
         for (Action action : actions) {
             if (action.getLocation().equals(location)) {
@@ -58,8 +59,8 @@ public class UtilityFunctions {
         return filteredActions;
     }
 
-    public static ArrayList<Action> sortActionsByStat(ArrayList<Action> actions, String stat) {
-        ArrayList<Action> filteredActions = new ArrayList<>();
+    public static List<Action> sortActionsByStat(List<Action> actions, String stat) {
+        List<Action> filteredActions = new ArrayList<>();
 
         for (Action action : actions) {
             if (action.getTypeOfStat().equals(stat)) {
@@ -70,7 +71,7 @@ public class UtilityFunctions {
         return filteredActions;
     }
 
-    public static String actionsAvailableAsString(ArrayList<Action> actions) {
+    public static String actionsAvailableAsString(List<Action> actions) {
         String allActions = "";
 
         if (actions.isEmpty()) {

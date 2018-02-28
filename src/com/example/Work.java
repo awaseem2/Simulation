@@ -3,24 +3,22 @@ package com.example;
 import java.util.ArrayList;
 
 public class Work extends Location {
+    private String name = "work";
+    private boolean playerAtLocation = false;
+
     @Override
     String getName() {
-        return null;
+        return name;
     }
 
     @Override
     boolean isPlayerAtLocation() {
-        return false;
+        return playerAtLocation;
     }
 
     @Override
     void setPlayerAtLocation(boolean bool) {
-
-    }
-
-    @Override
-    void handleUserInput(String input) {
-
+        this.playerAtLocation = playerAtLocation;
     }
 
     @Override
@@ -29,7 +27,7 @@ public class Work extends Location {
     }
 
     @Override
-    void moveTo() {
+    void moveTo(String location) {
 
     }
 }

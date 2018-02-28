@@ -8,6 +8,14 @@ public class Time {
     private static int hour;
     private static int minute;
 
+    public static int getMinuteConstant() {
+        return MINUTE_CONSTANT;
+    }
+
+    public static int getHourConsant() {
+        return HOUR_CONSANT;
+    }
+
     public static int getDay() {
         return day;
     }
@@ -33,14 +41,19 @@ public class Time {
     }
 
     public static void fixUpdatedTime() {
-        if (minute > MINUTE_CONSTANT) {
+        if (minute >= MINUTE_CONSTANT) {
             hour += minute / MINUTE_CONSTANT;
             minute = minute % MINUTE_CONSTANT;
         }
-        if (hour > HOUR_CONSANT) {
+        if (hour >= HOUR_CONSANT) {
             day += hour / HOUR_CONSANT;
             hour = hour % HOUR_CONSANT;
         }
 
+    }
+
+    public static String getCurrentTime() {
+        return "day " + Time.getDay() + " at hour " + Time.getHour()
+                + " minute " + Time.getMinute();
     }
 }
