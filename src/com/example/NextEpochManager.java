@@ -21,7 +21,7 @@ public class NextEpochManager {
                 System.exit(0);
             }
             timePassed += NextEpochManager.increaseLowestStat();
-            Sim.printStats();
+            System.out.println();
         }
 
         Time.setMinute(timePassed);
@@ -153,6 +153,7 @@ public class NextEpochManager {
                     Time.setMinute(additionalTime);
                     Time.fixUpdatedTime();
 
+                    simActionUpdate(ActionManager.getEnergyActions().get(randomIndex));
                     System.out.println("Energy has increased by " + additionalEnergy);
                 }
 
@@ -170,6 +171,7 @@ public class NextEpochManager {
                     Time.setMinute(additionalTime);
                     Time.fixUpdatedTime();
 
+                    simActionUpdate(ActionManager.getHungerActions().get(randomIndex));
                     System.out.println("Hunger has increased by " + additionalHunger);
                 }
                 break;
@@ -186,6 +188,7 @@ public class NextEpochManager {
                     Time.setMinute(additionalTime);
                     Time.fixUpdatedTime();
 
+                    simActionUpdate(ActionManager.getFunActions().get(randomIndex));
                     System.out.println("Fun has increased by " + additionalFun);
                 }
                 break;
@@ -202,6 +205,7 @@ public class NextEpochManager {
                     Time.setMinute(additionalTime);
                     Time.fixUpdatedTime();
 
+                    simActionUpdate(ActionManager.getSocialActions().get(randomIndex));
                     System.out.println("Social has increased by " + additionalSocial);
                 }
                 break;
@@ -217,6 +221,7 @@ public class NextEpochManager {
                     Time.setMinute(additionalTime);
                     Time.fixUpdatedTime();
 
+                    simActionUpdate(ActionManager.getHygieneActions().get(randomIndex));
                     System.out.println("Hygiene has increased by " + additionalHygiene);
                 }
                 break;
@@ -233,6 +238,7 @@ public class NextEpochManager {
                     Time.setMinute(additionalTime);
                     Time.fixUpdatedTime();
 
+                    simActionUpdate(ActionManager.getBladderActions().get(randomIndex));
                     System.out.println("Bladder has increased by " + additionalBladder);
                 }
                 break;
@@ -240,6 +246,10 @@ public class NextEpochManager {
         }
 
         return additionalTime;
+    }
+
+    private static void simActionUpdate(Action action) {
+        System.out.println("The sim has decided to " + action.getName());
     }
 
 }
