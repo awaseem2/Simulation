@@ -9,17 +9,17 @@ public class Work extends Location {
     }
 
     @Override
-    ArrayList<String> getActionsAvailable() {
-        return null;
-    }
-
-    @Override
     boolean isPlayerAtLocation() {
         return false;
     }
 
     @Override
     void setPlayerAtLocation(boolean bool) {
+
+    }
+
+    @Override
+    void handleUserInput(String input) {
 
     }
 

@@ -1,70 +1,69 @@
 package com.example;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Sim {
     private static final int MAX_PER_STAT = 10;
-    private static int energy;
-    private static int hunger;
-    private static int fun;
-    private static int social;
-    private static int hygiene;
-    private static int bladder;
+    private static double energy;
+    private static double hunger;
+    private static double fun;
+    private static double social;
+    private static double hygiene;
+    private static double bladder;
     private static boolean alive;
     private static ArrayList<Action> availableActions;
     private static Location currentLocation;
 
-    public static int getEnergy() {
+    public static double getEnergy() {
         return energy;
     }
 
-    public static void setEnergy(int energy) {
+    public static void setEnergy(double energy) {
         Sim.energy = energy;
     }
 
-    public static int getHunger() {
+    public static double getHunger() {
         return hunger;
     }
 
-    public static void setHunger(int hunger) {
+    public static void setHunger(double hunger) {
         Sim.hunger = hunger;
     }
 
-    public static int getFun() {
+    public static double getFun() {
         return fun;
     }
 
-    public static void setFun(int fun) {
+    public static void setFun(double fun) {
         Sim.fun = fun;
     }
 
-    public static int getSocial() {
+    public static double getSocial() {
         return social;
     }
 
-    public static void setSocial(int social) {
+    public static void setSocial(double social) {
         Sim.social = social;
     }
 
-    public static int getHygiene() {
+    public static double getHygiene() {
         return hygiene;
     }
 
-    public static void setHygiene(int hygiene) {
+    public static void setHygiene(double hygiene) {
         Sim.hygiene = hygiene;
     }
 
-    public static int getBladder() {
+    public static double getBladder() {
         return bladder;
     }
 
-    public static void setBladder(int bladder) {
+    public static void setBladder(double bladder) {
         Sim.bladder = bladder;
     }
 
     public static boolean isAlive() {
-        return alive;
+        return energy > 0 && hunger > 0 && fun > 0 && social > 0 && hygiene > 0 && bladder > 0;
     }
 
     public static void setAlive(boolean alive) {

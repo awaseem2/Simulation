@@ -1,20 +1,16 @@
 package com.example;
-import com.google.gson.Gson;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class SimsGame {
     private Scanner scanner = new Scanner(System.in);
-    String currentLocationName;
-    private ArrayList<Action> actions = new ArrayList<>();
+    private ArrayList<Action> actions;
     boolean isFirstEpoch;
     private Home home;
     private Work work;
     private Park park;
 
     public void initializeSimulation() {
-
         home = new Home();
         work = new Work();
         park = new Park();
@@ -27,18 +23,18 @@ public class SimsGame {
         Sim.setAlive(true);
 
         isFirstEpoch = true;
-        handleUserInputBeforeEpoch();
+        handleUserInput();
 
     }
 
     public void runSimulation() {
-        while(Sim.isAlive()) {
-            handleUserInputBeforeEpoch();
+        while (Sim.isAlive()) {
+            handleUserInput();
         }
 
     }
 
-    public void handleUserInputBeforeEpoch() {
+    public void handleUserInput() {
         if (isFirstEpoch) {
             System.out.println("You have entered a game of SimsGame.");
             System.out.println("Much like normal sims, you have a number of things to do at your " +
@@ -53,13 +49,21 @@ public class SimsGame {
         Location currentLocation = Sim.getCurrentLocation();
         String currentLocationName = currentLocation.getName();
         System.out.println("Your sim is currently at " + currentLocationName);
-        //System.out.println("The actions available in this room are "
-        //        + UtilityFunctions.actionsAvailableAsString(currentLocation.getActionsAvailable()));
+        System.out.println("The actions available in this room are "
+                + UtilityFunctions.actionsAvailableAsString(UtilityFunctions.actionsPerLocation(
+                Sim.getAvailableActions(), currentLocationName)));
 
-        System.out.println("Input what you would like your sim to do. " +
-                "When you are done, say 'next epoch'.");
-        String userInput = scanner.nextLine();
-        currentLocation.handleUserInput(userInput);
+        String userInput = "";
+
+        while (!userInput.equals("next epoch")) {
+            System.out.println("Input what you would like your sim to do. " +
+                    "When you are done, say 'next epoch'.");
+            userInput = scanner.nextLine();
+            currentLocation.handleUserInput(userInput);
+        }
+
+        System.out.println("Your sim has died! Thanks for playing The Sims.");
+
 
     }
 

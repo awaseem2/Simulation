@@ -1,13 +1,11 @@
 package com.example;
 
-import javax.rmi.CORBA.Util;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class UtilityFunctions {
     private static String currentLocation;
@@ -72,16 +70,16 @@ public class UtilityFunctions {
         return filteredActions;
     }
 
-    public static String actionsAvailableAsString(String[] actions) {
+    public static String actionsAvailableAsString(ArrayList<Action> actions) {
         String allActions = "";
 
-        if (actions.length == 0) {
+        if (actions.isEmpty()) {
             return "nothing";
         }
 
-        for (int i = 0; i < actions.length; i++) {
-            allActions += actions[i];
-            if (i != actions.length - 1) {
+        for (int i = 0; i < actions.size(); i++) {
+            allActions += actions.get(i).getName();
+            if (i != actions.size() - 1) {
                 allActions += ", ";
             }
         }
@@ -90,7 +88,7 @@ public class UtilityFunctions {
     }
 
     public static void increaseEnergy(int statIncreaseAmount) {
-        int newEnergy = Sim.getEnergy() + statIncreaseAmount;
+        double newEnergy = Sim.getEnergy() + statIncreaseAmount;
 
         if (newEnergy > MAX_PER_STAT) {
             Sim.setEnergy(MAX_PER_STAT);
@@ -101,7 +99,7 @@ public class UtilityFunctions {
     }
 
     public static void increaseHunger(int statIncreaseAmount) {
-        int newHunger = Sim.getHunger() + statIncreaseAmount;
+        double newHunger = Sim.getHunger() + statIncreaseAmount;
 
         if (newHunger > MAX_PER_STAT) {
             Sim.setHunger(MAX_PER_STAT);
@@ -112,7 +110,7 @@ public class UtilityFunctions {
     }
 
     public static void increaseFun(int statIncreaseAmount) {
-        int newFun = Sim.getFun() + statIncreaseAmount;
+        double newFun = Sim.getFun() + statIncreaseAmount;
 
         if (newFun > MAX_PER_STAT) {
             Sim.setFun(MAX_PER_STAT);
@@ -123,7 +121,7 @@ public class UtilityFunctions {
     }
 
     public static void increaseSocial(int statIncreaseAmount) {
-        int newSocial = Sim.getHunger() + statIncreaseAmount;
+        double newSocial = Sim.getHunger() + statIncreaseAmount;
 
         if (newSocial > MAX_PER_STAT) {
             Sim.setSocial(MAX_PER_STAT);
@@ -134,7 +132,7 @@ public class UtilityFunctions {
     }
 
     public static void increaseHygiene(int statIncreaseAmount) {
-        int newHygiene = Sim.getHygiene() + statIncreaseAmount;
+        double newHygiene = Sim.getHygiene() + statIncreaseAmount;
 
         if (newHygiene > MAX_PER_STAT) {
             Sim.setHygiene(MAX_PER_STAT);
@@ -144,7 +142,7 @@ public class UtilityFunctions {
     }
 
     public static void increaseBladder(int statIncreaseAmount) {
-        int newBladder = Sim.getBladder() + statIncreaseAmount;
+        double newBladder = Sim.getBladder() + statIncreaseAmount;
 
         if (newBladder > MAX_PER_STAT) {
             Sim.setBladder(MAX_PER_STAT);
