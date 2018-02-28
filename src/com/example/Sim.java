@@ -11,8 +11,11 @@ public class Sim {
     private static double hygiene;
     private static double bladder;
     private static boolean alive;
+    private static Job job;
+    private static BankAccount bankAccount;
     private static List<Action> availableActions;
     private static Location currentLocation;
+    private static int timeWorked;
 
     public static double getEnergy() {
         return energy;
@@ -86,6 +89,31 @@ public class Sim {
         Sim.currentLocation = currentLocation;
     }
 
+    public static int getTimeWorked() {
+        return timeWorked;
+    }
+
+    public static void setTimeWorked(int timeWorked) {
+        Sim.timeWorked = timeWorked;
+    }
+
+    public static Job getJob() {
+        return job;
+    }
+
+    public static void setJob(Job job) {
+        Sim.job = job;
+    }
+
+    public static BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public static void setBankAccount(BankAccount bankAccount) {
+        Sim.bankAccount = bankAccount;
+    }
+
+    /** Sets all the sim's stats to the maximum value of 10. */
     public static void setStatsToFull() {
         Sim.energy = MAX_PER_STAT;
         Sim.fun = MAX_PER_STAT;
@@ -96,6 +124,7 @@ public class Sim {
 
     }
 
+    /** Prints out the Sim's current stats and simoleons. */
     public static void printStats() {
         System.out.println("Energy: " + energy);
         System.out.println("Hunger: " + hunger);
@@ -103,6 +132,7 @@ public class Sim {
         System.out.println("Social: " + social);
         System.out.println("Hygiene: " + hygiene);
         System.out.println("Bladder: " + bladder);
+        System.out.println("Simoleons: " + bankAccount.getSimoleons());
     }
 
 

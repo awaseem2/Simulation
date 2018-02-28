@@ -6,9 +6,9 @@ public class Simulation {
 
     public static void main(String[] args) {
         Gson gson = new Gson();
-        Map.setSimsGame(gson.fromJson(UtilityFunctions.getFileContentsAsString(
+        Simsville.setSimsGame(gson.fromJson(DataManager.getFileContentsAsString(
                 "Actions.json"), SimsGame.class));
-        Map.getSimsGame().initializeSimulation();
-        Map.getSimsGame().runSimulation();
+        Simsville.getSimsGame().initializeSimulation();
+        Simsville.getSimsGame().runSimulation();
     }
 }

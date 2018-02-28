@@ -1,6 +1,6 @@
 package com.example;
 
-public class Map {
+public class Simsville {
     private static SimsGame simsGame = new SimsGame();
 
     public static SimsGame getSimsGame() {
@@ -8,6 +8,6 @@ public class Map {
     }
 
     public static void setSimsGame(SimsGame simsGame) {
-        Map.simsGame = simsGame;
+        Simsville.simsGame = simsGame;
     }
 }

@@ -38,8 +38,10 @@ public class Time {
 
     public static void setMinute(int minute) {
         Time.minute = minute;
+        fixUpdatedTime();
     }
 
+    /** Fixes time if hours is over 24 and/or minutes is over 60. */
     public static void fixUpdatedTime() {
         if (minute >= MINUTE_CONSTANT) {
             hour += minute / MINUTE_CONSTANT;
@@ -52,6 +54,10 @@ public class Time {
 
     }
 
+    /** Displays the current time in one string
+     *
+     * @return String of the current time
+     */
     public static String getCurrentTime() {
         return "day " + Time.getDay() + " at hour " + Time.getHour()
                 + " minute " + Time.getMinute();

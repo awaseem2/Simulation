@@ -5,19 +5,22 @@ import java.util.Scanner;
 public class SimsGame {
     private Scanner scanner = new Scanner(System.in);
     private List<Action> actions;
+    private Job job;
     boolean isFirstEpoch;
     private Home home;
     private Work work;
     private Park park;
 
+    /** Initializes all parts of the simulation that need to be. */
     public void initializeSimulation() {
         Sim.setAvailableActions(actions);
         home = new Home();
         work = new Work();
         park = new Park();
         UtilityFunctions.initializeLocations(home, work, park);
-        /*UtilityFunctions.setCurrentLocation(home.getName());
-        home.setPlayerAtLocation(true);*/
+        Sim.setBankAccount(new BankAccount());
+        Sim.setJob(job);
+        Sim.getBankAccount().setSimoleons(Sim.getJob().getSimoleons());
 
         ActionManager.initializeFilteredActionsLists(home);
         Sim.setCurrentLocation(home);
@@ -29,6 +32,7 @@ public class SimsGame {
 
     }
 
+    /** Gets user input and runs the simulation until the sim has died. */
     public void runSimulation() {
         while (Sim.isAlive()) {
             handleUserInput();
@@ -39,6 +43,7 @@ public class SimsGame {
 
     }
 
+    /** Prints information useful to the player before getting player input. */
     public void handleUserInput() {
         if (isFirstEpoch) {
             System.out.println("You have entered a game of SimsGame.");
@@ -68,5 +73,7 @@ public class SimsGame {
 
     }
 
-
+    public List<Action> getActions() {
+        return actions;
+    }
 }

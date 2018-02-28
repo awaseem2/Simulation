@@ -19,14 +19,16 @@
       "location": "home",
       "typeOfStat": "hunger",
       "statIncreaseAmount": 8,
-      "timeIncreaseAmount": 60
+      "timeIncreaseAmount": 60,
+      "simoleanIncreaseAmount": -20
     },
     {
       "name": "eat snack",
       "location": "home",
       "typeOfStat": "hunger",
       "statIncreaseAmount": 3,
-      "timeIncreaseAmount": 15
+      "timeIncreaseAmount": 15,
+      "simoleanIncreaseAmount": -5
     },
     {
       "name": "watch tv",
@@ -69,6 +71,70 @@
       "typeOfStat": "bladder",
       "statIncreaseAmount": 9,
       "timeIncreaseAmount": 10
+    },
+    {
+      "name": "work on project",
+      "location": "work",
+      "typeOfStat": "fun",
+      "statIncreaseAmount": -1,
+      "timeIncreaseAmount": 480,
+      "simoleanIncreaseAmount": 160
+    },
+    {
+      "name": "work overtime",
+      "location": "work",
+      "typeOfStat": "fun",
+      "statIncreaseAmount": -4,
+      "timeIncreaseAmount": 600,
+      "simoleanIncreaseAmount": 300
+    },
+    {
+      "name": "nap on bench",
+      "location": "park",
+      "typeOfStat": "energy",
+      "statIncreaseAmount": 4,
+      "timeIncreaseAmount": 30
+    },
+    {
+      "name": "steal picnic food",
+      "location": "park",
+      "typeOfStat": "hunger",
+      "statIncreaseAmount": 8,
+      "timeIncreaseAmount": 10,
+      "simoleanIncreaseAmount": 0
+    },
+    {
+      "name": "play chess with old man",
+      "location": "park",
+      "typeOfStat": "fun",
+      "statIncreaseAmount": 6,
+      "timeIncreaseAmount": 80
+    },
+    {
+      "name": "talk to strangers",
+      "location": "park",
+      "typeOfStat": "social",
+      "statIncreaseAmount": 8,
+      "timeIncreaseAmount": 25
+    },
+    {
+      "name": "bathe in bird shower",
+      "location": "park",
+      "typeOfStat": "hygiene",
+      "statIncreaseAmount": 4,
+      "timeIncreaseAmount": 15
+    },
+    {
+      "name": "use porta potty",
+      "location": "park",
+      "typeOfStat": "bladder",
+      "statIncreaseAmount": 9,
+      "timeIncreaseAmount": 10
     }
-  ]
+  ],
+  "job": {
+    "name": "artist",
+    "skill level": 2,
+    "simoleons": 200
+  }
 }

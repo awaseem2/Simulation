@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.List;
 import java.util.Random;
 
 public class NextEpochManager {
@@ -7,7 +8,9 @@ public class NextEpochManager {
     private static final double MAXIMUM_DECREASE_FACTOR = .75;
     private static final int EPOCH_LENGTH = 12;
 
+    /** Decreases two random stats, increases the lowest stat, and updates time. */
     public static void handleNextEpoch() {
+        ActionManager.initializeFilteredActionsLists(Sim.getCurrentLocation());
         int timePassed = 0;
         while (timePassed < (EPOCH_LENGTH * Time.getMinuteConstant())) {
             NextEpochManager.decreaseRandomStat();
@@ -25,10 +28,15 @@ public class NextEpochManager {
         Time.fixUpdatedTime();
     }
 
-    //https://stackoverflow.com/questions/363681/how-do-i-generate-random-integers-within-a-specific-range-in-java
+    /** Generates a random int 1-6 and decreases that respective stat.
+     *
+     * Used: https://stackoverflow.com/questions/363681/how-do-i-generate-random-integers-within-a-specific-range-in-java
+     */
     public static void decreaseRandomStat() {
+        final int NUMBER_OF_STATS = 6;
+        final int MINIMUM = 1;
         Random random = new Random();
-        int randomInteger = random.nextInt((6 - 1) + 1) + 1;
+        int randomInteger = random.nextInt((NUMBER_OF_STATS - MINIMUM) + 1) + MINIMUM;
         int newValue;
 
         switch (randomInteger) {
@@ -77,7 +85,13 @@ public class NextEpochManager {
     }
 
 
-    //https://stackoverflow.com/questions/3680637/generate-a-random-double-in-a-range
+    /** Generates a random double within a given range
+     * Used: https://stackoverflow.com/questions/3680637/generate-a-random-double-in-a-range
+     *
+     * @param minimum the min value of the range
+     * @param maximum the max value of the range
+     * @return a random double in that range.
+     */
     public static double randomDouble(double minimum, double maximum) {
         Random random = new Random();
         double randomValue = minimum + (maximum - minimum) * random.nextDouble();
@@ -116,6 +130,10 @@ public class NextEpochManager {
 
     }
 
+    /** Increases the lowest stat by a random action of that corresponding stat.
+     *
+     * @return the amount of time taken performing the random action.
+     */
     public static int increaseLowestStat() {
         String lowestStat = findLowestStat();
         Random random = new Random();
@@ -128,7 +146,7 @@ public class NextEpochManager {
                 if (ActionManager.getEnergyActions().size() > 0) {
                     int additionalEnergy = ActionManager.getEnergyActions()
                             .get(randomIndex).getStatIncreaseAmount();
-                    UtilityFunctions.increaseEnergy(additionalEnergy);
+                    StatsManager.increaseEnergy(additionalEnergy);
 
                     additionalTime = ActionManager.getEnergyActions()
                             .get(randomIndex).getTimeIncreaseAmount();
@@ -145,7 +163,7 @@ public class NextEpochManager {
                 if (ActionManager.getHungerActions().size() > 0) {
                     int additionalHunger = ActionManager.getHungerActions()
                             .get(randomIndex).getStatIncreaseAmount();
-                    UtilityFunctions.increaseHunger(additionalHunger);
+                    StatsManager.increaseHunger(additionalHunger);
 
                     additionalTime = ActionManager.getHungerActions()
                             .get(randomIndex).getTimeIncreaseAmount();
@@ -161,7 +179,7 @@ public class NextEpochManager {
                 if (ActionManager.getFunActions().size() > 0) {
                     int additionalFun = ActionManager.getFunActions()
                             .get(randomIndex).getStatIncreaseAmount();
-                    UtilityFunctions.increaseFun(additionalFun);
+                    StatsManager.increaseFun(additionalFun);
 
                     additionalTime = ActionManager.getFunActions()
                             .get(randomIndex).getTimeIncreaseAmount();
@@ -177,7 +195,7 @@ public class NextEpochManager {
                 if (ActionManager.getSocialActions().size() > 0) {
                     int additionalSocial = ActionManager.getSocialActions()
                             .get(randomIndex).getStatIncreaseAmount();
-                    UtilityFunctions.increaseSocial(additionalSocial);
+                    StatsManager.increaseSocial(additionalSocial);
 
                     additionalTime = ActionManager.getSocialActions()
                             .get(randomIndex).getTimeIncreaseAmount();
@@ -193,7 +211,7 @@ public class NextEpochManager {
                 if (ActionManager.getHygieneActions().size() > 0) {
                     int additionalHygiene = ActionManager.getHygieneActions()
                             .get(randomIndex).getStatIncreaseAmount();
-                    UtilityFunctions.increaseHygiene(additionalHygiene);
+                    StatsManager.increaseHygiene(additionalHygiene);
 
                     additionalTime = ActionManager.getHygieneActions().get(randomIndex).getTimeIncreaseAmount();
                     Time.setMinute(additionalTime);
@@ -208,7 +226,7 @@ public class NextEpochManager {
                 if (ActionManager.getBladderActions().size() > 0) {
                     int additionalBladder = ActionManager.getBladderActions()
                             .get(randomIndex).getStatIncreaseAmount();
-                    UtilityFunctions.increaseBladder(additionalBladder);
+                    StatsManager.increaseBladder(additionalBladder);
 
                     additionalTime = ActionManager.getBladderActions()
                             .get(randomIndex).getTimeIncreaseAmount();

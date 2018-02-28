@@ -12,6 +12,10 @@ public class ActionManager {
     private static List<Action> hygieneActions;
     private static List<Action> bladderActions;
 
+    /** Initializes ArrayLists for each type of stat based on the current location.
+     *
+     * @param currentLocation the location at which the Sim is
+     */
     public static void initializeFilteredActionsLists(Location currentLocation) {
         currentLocationActions = UtilityFunctions.actionsPerLocation(
                 Sim.getAvailableActions(), currentLocation.getName());

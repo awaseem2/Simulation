@@ -1,13 +1,15 @@
 package com.example;
 
 public class BankAccount extends Thing {
-    private static int totalSimoleons;
+    private int simoleons;
 
-    public static int getTotalSimoleons() {
-        return totalSimoleons;
+
+    @Override
+    public int getSimoleons() {
+        return simoleons;
     }
 
-    public static void setTotalSimoleons(int totalSimoleons) {
-        BankAccount.totalSimoleons = totalSimoleons;
+    public void setSimoleons(int simoleons) {
+        this.simoleons = simoleons;
     }
 }
